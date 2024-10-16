@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('excerpt');
             $table->longText('description');
-            $table->tinyInteger('status');
+            $table->boolean('status');
+
             $table->timestamps();
         });
     }
