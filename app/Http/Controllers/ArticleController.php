@@ -49,11 +49,11 @@ class ArticleController extends Controller
 
         $article->update($data);
 
-        return redirect(route('articles.index'))->with('success', "Article updated succesfully");
+        return redirect(route('articles.index'))->with('success', "Article updated successfully");
     }
 
     public function destroy(Article $article) {
         $article->delete();
-        return redirect(route('articles.index'))->with('success', 'Article delted succefully');
+        return redirect(route('articles.index'))->with('success', 'Article deleted successfully');
     }
 }

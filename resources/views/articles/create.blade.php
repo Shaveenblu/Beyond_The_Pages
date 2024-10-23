@@ -4,10 +4,16 @@
 </head>
 <body>
     <h1>
-        Create a article
+        Create an article
     </h1>
 
-    <form method="post" action="{{ route("articles.store") }}">
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <form method="post" action="{{ route('articles.store') }}">
         @csrf
         @method('post')
         <div>
@@ -16,18 +22,17 @@
                 @foreach($errors->all() as $error)
 {{--                     Error display--}}
                     <li>
-                        {{ $error  }}
+                        {{ $error }}
                     </li>
-
                 @endforeach
-                @endif
-                <label>title</label>
-                <input type="title" name="title" placeholder="title"/>
+            @endif
+                <label for="title">Title</label>
+                <input type="text" name="title" placeholder="title"/>
 
             </ul>
         </div>
 
-        <div>
+        <div class="form-group">
             <label>slug</label>
             <input type="text" name="slug" placeholder="slug"/>
         </div>
@@ -47,7 +52,7 @@
             <input type="integer" name="status" placeholder="status"/>
         </div>
 
-        <div>
+        <div class="btn-custom">
             <input type="submit" value="save article"/>
         </div>
 

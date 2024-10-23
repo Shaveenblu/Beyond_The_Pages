@@ -19,6 +19,10 @@ Route::get('/article/{article}/edit',[ArticleController::class, 'edit'])->name('
 Route::put('/article/{article}/update',[ArticleController::class, 'update'])->name('articles.update');
 Route::delete('/article/{article}/destroy',[ArticleController::class, 'destroy'])->name('articles.destroy');
 
+
+
+Route::get('/status', [StatusConbtroller::class, 'index'])->name('status.index');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

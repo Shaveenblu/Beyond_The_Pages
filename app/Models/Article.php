@@ -9,6 +9,9 @@ class Article extends Model
 {
     protected $fillable = ['title', 'slug', 'excerpt', 'description', 'status'];
 
+    // Primary key added
+    protected $primaryKey = 'article_id';
+
     public function tags() {
         return $this->belongsToMany(Tag::class, 'article_tag');
     }

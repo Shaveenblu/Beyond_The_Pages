@@ -2,6 +2,7 @@
 <head>
     <title>Article</title>
 
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
     <h1>
@@ -13,6 +14,7 @@
                 {{ session ('success') }}
             </div>
         @endif
+
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -36,10 +38,10 @@
                         <a href = ' {{ route('articles.edit', ['article' => $article]) }}'>Edit</a>
                     </td>
                     <td>
-                        <form method="post" action="">
+                        <form method="post" action="{{ route('articles.destroy', ['article' => $article]) }}">
                             @csrf
-                            @method('DELETE')
-                            <input type="submit" value="delete">
+                            @method('delete')
+                            <input type="submit" value="Delete"/>
                         </form>
                     </td>
 
@@ -48,5 +50,7 @@
             @endforeach
         </table>
     </div>
+
+<script src="/bootstrap/js/bootstrap.js"> </script>
 </body>
 </html>

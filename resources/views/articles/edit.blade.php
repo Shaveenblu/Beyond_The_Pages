@@ -7,7 +7,7 @@
     Edit a article
 </h1>
 
-<form method="post" action="{{route('articles.update', ['articles' => $article])}}">
+<form method="post" action="{{route('articles.update', ['article' => $article])}}">
     @csrf
     @method('put')
     <div>
