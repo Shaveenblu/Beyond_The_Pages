@@ -20,8 +20,6 @@ Route::put('/article/{article}/update',[ArticleController::class, 'update'])->na
 Route::delete('/article/{article}/destroy',[ArticleController::class, 'destroy'])->name('articles.destroy');
 
 
-
-
 //Route::get('/status', [StatusConbtroller::class, 'index'])->name('status.index');
 //Route::get
 

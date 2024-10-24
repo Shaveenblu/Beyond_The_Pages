@@ -1,13 +1,12 @@
-<html>
-<head>
-    <title>Create article</title>
-</head>
+@extends('layouts.app')
+
+@section('content')
 <body>
 <h1>
     Edit a article
 </h1>
-
-<form method="post" action="{{route('articles.update', ['article' => $article])}}">
+<div class="m-10">
+<form method="post" action="{{route('articles.update', ['article' => $article])}}" >
     @csrf
     @method('put')
     <div>
@@ -22,23 +21,17 @@
                 @endforeach
                 @endif
 
-
             </ul>
     </div>
 
     <div>
-        <label>title</label>
-        <input type="title" name="title" placeholder="title" value="{{$article->title}}"/>
+        <label  class="form-label">title</label>
+        <input type="title" name="title" placeholder="title" value="{{$article->title}}" class="form-control"/>
     </div>
 
-{{--    <div>--}}
-{{--        <label>slug</label>--}}
-{{--        <input type="text" name="slug" placeholder="slug" value="{{$article->slug}}"/>--}}
-{{--    </div>--}}
-
     <div>
-        <label>excerpt</label>
-        <input type="text" name="excerpt" placeholder="excerpt" value="{{ $article->excerpt }}"/>
+        <label class="form-label">excerpt</label>
+        <textarea rows="5" cols="5" name="excerpt" placeholder="excerpt">{{ $article->excerpt }}</textarea>
     </div>
 
     <div>
@@ -56,6 +49,6 @@
     </div>
 
 </form>
-
-</body>
-</html>
+</div>
+<script asset = "{{ asset('/bootstrap/js/bootstrap.js')}}"> </script>
+@endsection

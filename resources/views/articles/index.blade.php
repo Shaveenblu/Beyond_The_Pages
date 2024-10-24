@@ -1,34 +1,25 @@
-<html>
-<head>
-    <title>Article</title>
+@extends('layouts.app')
 
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-</head>
-<body>
-    <h1>
-        Article
-    </h1>
-    <div>
+    @section('content')
+    <div class="container  align-content-center" >
         @if(session()->has('success'))
             <div>
                 {{ session ('success') }}
             </div>
         @endif
 
-        <table border="1">
+        <table border="1" class="table table-dark table0-striped">
             <tr>
-                <th>ID</th>
-                <th>title</th>
-                <th>slug</th>
-                <th>excerpt</th>
-                <th>description</th>
-                <th>status</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th scope="col">title</th>
+                <th scope="row">slug</th>
+                <th scope="row">excerpt</th>
+                <th scope="row">description</th>
+                <th scope="row">status</th>
+                <th scope="row">Edit</th>
+                <th scope="row">Delete</th>
             </tr>
             @foreach($articles as $article)
                 <tr>
-                    <td>{{$article->article_id}}</td>
                     <td>{{$article->title}}</td>
                     <td>{{$article->slug}}</td>
                     <td>{{$article->excerpt}}</td>
@@ -51,6 +42,5 @@
         </table>
     </div>
 
-<script src="/bootstrap/js/bootstrap.js"> </script>
-</body>
-</html>
+<script asset = "{{ asset('/bootstrap/js/bootstrap.js')}}"> </script>
+@endsection

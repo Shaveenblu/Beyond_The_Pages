@@ -1,7 +1,6 @@
-<html>
-<head>
-    <title>Create article</title>
-</head>
+@extends('layouts.app')
+
+@section('content')
 <body>
     <h1>
         Create an article
@@ -26,6 +25,7 @@
                     </li>
                 @endforeach
             @endif
+                 <br>
                 <label for="title">Title</label>
                 <input type="text" name="title" placeholder="title"/>
 
@@ -38,8 +38,8 @@
 {{--        </div>--}}
 
         <div>
-            <label>excerpt</label>
-            <input type="text" name="excerpt" placeholder="excerpt"/>
+            <label class="form-label">excerpt</label>
+            <textarea name="excerpt" placeholder="excerpt" class="form-control"></textarea>
         </div>
 
         <div>
@@ -58,5 +58,5 @@
 
     </form>
 
-</body>
-</html>
+    <script asset = "{{ asset('/bootstrap/js/bootstrap.js')}}"> </script>
+@endsection
