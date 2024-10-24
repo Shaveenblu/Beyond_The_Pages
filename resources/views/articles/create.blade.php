@@ -32,10 +32,10 @@
             </ul>
         </div>
 
-        <div class="form-group">
-            <label>slug</label>
-            <input type="text" name="slug" placeholder="slug"/>
-        </div>
+{{--        <div class="form-group">--}}
+{{--            <label>slug</label>--}}
+{{--            <input type="text" name="slug" placeholder="slug"/>--}}
+{{--        </div>--}}
 
         <div>
             <label>excerpt</label>

@@ -31,10 +31,10 @@
         <input type="title" name="title" placeholder="title" value="{{$article->title}}"/>
     </div>
 
-    <div>
-        <label>slug</label>
-        <input type="text" name="slug" placeholder="slug" value="{{$article->slug}}"/>
-    </div>
+{{--    <div>--}}
+{{--        <label>slug</label>--}}
+{{--        <input type="text" name="slug" placeholder="slug" value="{{$article->slug}}"/>--}}
+{{--    </div>--}}
 
     <div>
         <label>excerpt</label>

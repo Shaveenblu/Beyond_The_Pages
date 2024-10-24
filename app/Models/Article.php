@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Psy\Util\Str;
+
 
 class Article extends Model
 {
@@ -12,7 +14,13 @@ class Article extends Model
     // Primary key added
     protected $primaryKey = 'article_id';
 
+    use HasFactory;
+
     public function tags() {
         return $this->belongsToMany(Tag::class, 'article_tag');
     }
+
+    protected $guarded = [];
+
+
 }

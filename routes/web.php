@@ -21,7 +21,9 @@ Route::delete('/article/{article}/destroy',[ArticleController::class, 'destroy']
 
 
 
-Route::get('/status', [StatusConbtroller::class, 'index'])->name('status.index');
+
+//Route::get('/status', [StatusConbtroller::class, 'index'])->name('status.index');
+//Route::get
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

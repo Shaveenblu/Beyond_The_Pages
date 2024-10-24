@@ -16,6 +16,11 @@ class Status extends Controller
         return view('status.index');
     }
 
+    public function show($slug) {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        return view('post.show', compact('post'));
+    }
+
 
 
 }

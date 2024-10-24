@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -21,12 +22,13 @@ class ArticleController extends Controller
     public function store(Request $request) {
         $data = $request->validate([
             'title' => 'required',
-            'slug' => 'required',
+//            'slug' => 'required',
             'excerpt' => 'required',
             'description' => 'required',
             'status' => 'required|integer',
 
         ]);
+        $data['slug'] = Str::slug($data['title']);
 
         $newArticle = Article::create($data);
 
@@ -41,11 +43,11 @@ class ArticleController extends Controller
     public function update(Article $article, Request $request) {
         $data = $request->validate([
             'title' => 'required',
-            'slug' => 'required',
             'excerpt' => 'required',
             'description' => 'required',
             'status' => 'required|integer',
         ]);
+        $data['slug'] = Str::slug($data['title']);
 
         $article->update($data);
 
