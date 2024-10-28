@@ -10,13 +10,13 @@
 
         <table border="1" class="table table-dark table0-striped">
             <tr>
-                <th scope="col">title</th>
-                <th scope="row">slug</th>
-                <th scope="row">excerpt</th>
-                <th scope="row">description</th>
-                <th scope="row">status</th>
-                <th scope="row">Edit</th>
-                <th scope="row">Delete</th>
+                <th scope="col" class="text-green-600 text-xl">Title</th>
+                <th scope="row" class="text-green-600 text-xl">Slug</th>
+                <th scope="row" class="text-green-600 text-xl">Excerpt</th>
+                <th scope="row" class="text-green-600 text-xl">Description</th>
+                <th scope="row" class="text-green-600 text-xl">Status</th>
+                <th scope="row" class="text-green-600 text-xl">Edit</th>
+                <th scope="row" class="text-red-600 text-xl">Delete</th>
             </tr>
             @foreach($articles as $article)
                 <tr>

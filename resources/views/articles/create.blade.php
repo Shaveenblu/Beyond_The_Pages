@@ -2,7 +2,7 @@
 
 @section('content')
 <body>
-    <h1>
+    <h1 class="text-green-600 text-center text-xl">
         Create an article
     </h1>
 
@@ -12,21 +12,22 @@
         </div>
     @endif
 
-    <form method="post" action="{{ route('articles.store') }}">
+    <form method="post" action="{{ route('articles.store') }} ">
         @csrf
         @method('post')
-        <div>
+        <div class="m-5">
             @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
 {{--                     Error display--}}
-                    <li>
+                    <li class="bg-red-600">
                         {{ $error }}
                     </li>
                 @endforeach
             @endif
                  <br>
                 <label for="title">Title</label>
+                <br/>
                 <input type="text" name="title" placeholder="title"/>
 
             </ul>
@@ -37,23 +38,26 @@
 {{--            <input type="text" name="slug" placeholder="slug"/>--}}
 {{--        </div>--}}
 
-        <div>
-            <label class="form-label">excerpt</label>
-            <textarea name="excerpt" placeholder="excerpt" class="form-control"></textarea>
+        <div class="m-5">
+            <label class="form-label">Excerpt</label>
+            <br/>
+            <textarea name="excerpt" placeholder="excerpt" class="" rows="2" cols="100"></textarea>
         </div>
 
-        <div>
-            <label>description</label>
-            <input type="text" name="description" placeholder="description"/>
+        <div class="m-5">
+            <label class="form-label">Description</label>
+            <br/>
+            <textarea name="description" placeholder="description" rows="20" cols="100"></textarea>
         </div>
 
-        <div>
-            <label>status</label>
+        <div class="m-5">
+            <label>Status</label>
+            <br/>
             <input type="integer" name="status" placeholder="status"/>
         </div>
 
-        <div class="btn-custom">
-            <input type="submit" value="save article"/>
+        <div class="btn-custom m-5">
+            <button type="submit" value="save article" class="btn btn-dark">Submit</button>
         </div>
 
     </form>
