@@ -4,9 +4,9 @@
             {{ __('Welcome to Beyond the Pages') }}
         </h2>
         <br/>
-        <div class="container">
+        <div>
             <div class="row">
-                <div class="col-1.3">
+                <div class="col-2">
                     <a href="{{ route('articles.create') }}" class="btn btn-outline-success">Create an Article</a>
                 </div>
                 <div class="col-1.3">

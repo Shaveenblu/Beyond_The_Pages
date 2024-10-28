@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText('excerpt');
             $table->longText('description');
             $table->boolean('status');
-
+//            $table->string('category_id')->references('category_id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

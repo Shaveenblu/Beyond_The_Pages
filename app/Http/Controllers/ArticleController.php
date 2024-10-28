@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ArticleController extends Controller
 {
@@ -21,12 +22,11 @@ class ArticleController extends Controller
 
     public function store(Request $request) {
         $data = $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|min:3|',
 //            'slug' => 'required',
-            'excerpt' => 'required',
-            'description' => 'required',
+            'excerpt' => 'required|string|max:255|min:3',
+            'description' => 'required|string|min:3',
             'status' => 'required|integer',
-
         ]);
         $data['slug'] = Str::slug($data['title']);
 
@@ -42,20 +42,22 @@ class ArticleController extends Controller
 
     public function update(Article $article, Request $request) {
         $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'excerpt' => 'required',
-            'description' => 'required',
+            'title' => 'required|string|max:255|min:3',
+            'excerpt' => 'required|string|max:255|min:3',
+            'description' => 'required|string|min:3',
             'status' => 'required|integer',
         ]);
         $data['slug'] = Str::slug($data['title']);
 
         $article->update($data);
 
-        return redirect(route('articles.index'))->with('success', "Article updated successfully");
+        return redirect(route('articles.index'));
     }
 
     public function destroy(Article $article) {
         $article->delete();
-        return redirect(route('articles.index'))->with('success', 'Article deleted successfully');
+        $alert = Alert::success('Deleted successfully', 'Article deleted successfully');
+        return redirect()->route('articles.index');
     }
+
 }

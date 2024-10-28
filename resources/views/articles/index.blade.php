@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
     @section('content')
+        <h1 class="text-green-600 text-center text-xl">
+            View articles
+            <div class="m-4 col-m-5">
+                <a href="{{ route('articles.create') }}" class="btn btn-outline-success">Create an Article</a>
+            </div>
+        </h1>
+
     <div class="container  align-content-center" >
         @if(session()->has('success'))
             <div>
@@ -20,11 +27,11 @@
             </tr>
             @foreach($articles as $article)
                 <tr>
-                    <td>{{$article->title}}</td>
-                    <td>{{$article->slug}}</td>
-                    <td>{{$article->excerpt}}</td>
-                    <td>{{$article->description}}</td>
-                    <td>{{$article->status}}</td>
+                    <td class="text-sm">{{$article->title}}</td>
+                    <td class="text-sm">{{$article->slug}}</td>
+                    <td class="text-sm">{{$article->excerpt}}</td>
+                    <td class="text-sm">{{$article->description}}</td>
+                    <td class="text-sm">{{$article->status}}</td>
                     <td>
                         <a href = ' {{ route('articles.edit', ['article' => $article]) }}'>Edit</a>
                     </td>
