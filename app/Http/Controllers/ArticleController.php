@@ -56,7 +56,7 @@ class ArticleController extends Controller
 
     public function destroy(Article $article) {
         $article->delete();
-        $alert = Alert::success('Deleted successfully', 'Article deleted successfully');
+        Alert::success('Deleted successfully', 'Article deleted successfully');
         return redirect()->route('articles.index');
     }
 
