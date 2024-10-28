@@ -19,8 +19,8 @@
             @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
-{{--                     Error display--}}
-                    <li class="bg-red-600">
+                {{-- Error display --}}
+                    <li class="bg-red-600 text-white">
                         {{ $error }}
                     </li>
                 @endforeach
@@ -32,11 +32,6 @@
 
             </ul>
         </div>
-
-{{--        <div class="form-group">--}}
-{{--            <label>slug</label>--}}
-{{--            <input type="text" name="slug" placeholder="slug"/>--}}
-{{--        </div>--}}
 
         <div class="m-5">
             <label class="form-label">Excerpt</label>
@@ -57,7 +52,7 @@
         </div>
 
         <div class="btn-custom m-5">
-            <button type="submit" value="save article" class="btn btn-dark">Submit</button>
+            <button type="submit" value="save article" class="btn btn-outline-success">Submit</button>
         </div>
 
     </form>

@@ -28,7 +28,7 @@
                     <td>
                         <a href = ' {{ route('articles.edit', ['article' => $article]) }}'>Edit</a>
                     </td>
-                    <td>
+                    <td class=" text-red-600">
                         <form method="post" action="{{ route('articles.destroy', ['article' => $article]) }}">
                             @csrf
                             @method('delete')

@@ -1,12 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-100 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Welcome to Beyond the Pages') }}
         </h2>
-        <form action="{{ route('articles.create') }}">
-            <button type="submit" value="submit" onclick="">Article</button>
-        </form>
-
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-1.3">
+                    <a href="{{ route('articles.create') }}" class="btn btn-outline-success">Create an Article</a>
+                </div>
+                <div class="col-1.3">
+                    <a href="{{ route('articles.index') }}" class="btn btn-outline-success">Read Articles</a>
+                </div>
+            </div>
+        </div>
     </x-slot>
 
 
@@ -20,7 +27,4 @@
         </div>
     </div>
 
-    <div>
-        <button>Hello</button>
-    </div>
 </x-app-layout>

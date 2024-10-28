@@ -49,7 +49,7 @@
     </div>
 
     <div class="m-5">
-        <button type="submit" value="Update" class="btn btn-dark">UPDATE</button>
+        <button type="submit" value="Update" class="btn btn-outline-success">UPDATE</button>
     </div>
 
 </form>
