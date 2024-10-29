@@ -45,10 +45,15 @@
             <textarea name="description" placeholder="description" rows="20" cols="100" id="description" class=" border-0 focus:border-indigo-500"></textarea>
         </div>
 
-        <div class="m-5 ">
+
+        <div class="m-5">
             <label class="text-green-600">Status</label>
             <br/>
-            <input type="integer" name="status" placeholder="status"/>
+            <select class="status" name="status">
+                @foreach($status as $tag)
+                    <option value="{{ $tag->tag_id }}">{{ $tag->name }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="btn-custom m-5 ">
@@ -57,16 +62,22 @@
 
     </form>
     <script>
+        // code for WYSWYG editor description
         ClassicEditor
             .create(document.querySelector('#description'))
             .catch(error => {
                 console.error(error);
             });
+        // code for WYSWYG editor excerpt
         ClassicEditor
             .create(document.querySelector('#excerpt'))
             .catch(error => {
                 console.error(error);
             });
+        // JS snippet for select2
+        $(document).ready(function() {
+            $('.status').select2();
+        });
     </script>
 
     <script asset = "{{ asset('/bootstrap/js/bootstrap.js')}}"> </script>

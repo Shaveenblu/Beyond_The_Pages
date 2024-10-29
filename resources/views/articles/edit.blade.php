@@ -41,7 +41,11 @@
             <div class="m-5 ">
                 <label class="text-green-600">Status</label>
                 <br/>
-                <input type="integer" name="status" placeholder="Status" value="{{ $article->status }}" />
+                <select class="status" name="status">
+                    @foreach($status as $tag)
+                        <option value="{{ $tag->tag_id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="m-5 text-green-600">
@@ -64,6 +68,9 @@
             .catch(error => {
                 console.error(error);
             });
+        $(document).ready(function() {
+            $('.status').select2();
+        });
     </script>
 
     <script src="{{ asset('/bootstrap/js/bootstrap.js') }}"></script>

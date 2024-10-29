@@ -27,11 +27,11 @@
             </tr>
             @foreach($articles as $article)
                 <tr>
-                    <td class="text-sm">{{$article->title}}</td>
-                    <td class="text-sm">{{$article->slug}}</td>
-                    <td class="text-sm">{{$article->excerpt}}</td>
-                    <td class="text-sm">{{$article->description}}</td>
-                    <td class="text-sm">{{$article->status}}</td>
+                    <td class="text-sm">{{ $article->title }}</td>
+                    <td class="text-sm">{{ $article->slug }}</td>
+                    <td class="text-sm">{{ $article->excerpt }}</td>
+                    <td class="text-sm">{{ $article->description }}</td>
+                    <td class="text-sm">{{ $article->tag->name }}</td>
                     <td>
                         <a href = ' {{ route('articles.edit', ['article' => $article]) }}'>Edit</a>
                     </td>
@@ -48,6 +48,8 @@
             @endforeach
         </table>
     </div>
+<script>
 
+</script>
 <script asset = "{{ asset('/bootstrap/js/bootstrap.js')}}"> </script>
 @endsection

@@ -20,6 +20,10 @@ class Article extends Model
         return $this->belongsToMany(Tag::class, 'article_tag');
     }
 
+    public function tag() {
+        return $this->belongsTo(Tag::class,'status', 'tag_id');
+    }
+
     protected $guarded = [];
 
 
