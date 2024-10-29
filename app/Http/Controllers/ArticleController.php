@@ -21,15 +21,18 @@ class ArticleController extends Controller
     public function create() {
         $data = Article::all();
         $status = Tag::all();
-
         return view('articles.create', ['data' => $data, 'status' => $status]);
     }
 
     public function store(Request $request) {
         $status = Tag::all();
+
+        /*need to save user_id*/
+        /*need to save category_id*/
+        /*need to save tags*/
+       // article_tag (table)
         $data = $request->validate([
             'title' => 'required|string|max:255|min:3|',
-//            'slug' => 'required',
             'excerpt' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:3',
             'status' => 'required|integer',
