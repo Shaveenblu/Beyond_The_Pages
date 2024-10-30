@@ -39,7 +39,7 @@
             </div>
 
             <div class="m-5 ">
-                <label class="text-green-600">Status</label>
+                <label class="text-green-600">Category</label>
                 <br/>
                 <select class="status" name="status">
                     @foreach($status as $tag)
@@ -52,9 +52,10 @@
                 <button type="submit" value="Update" class="btn btn-outline-success">UPDATE</button>
             </div>
 
-        </form>
-    </div>
 
+        </form>
+
+    </div>
 
     <script>
         ClassicEditor

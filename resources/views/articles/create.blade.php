@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
+<body class="grid-nav">
     <h1 class="text-green-600 text-center text-xl">
         Create an article
     </h1>
@@ -20,7 +20,7 @@
             <ul>
                 @foreach($errors->all() as $error)
                 {{-- Error display --}}
-                    <li class="bg-red-600 text-white">
+                    <li class="list-group-item d-flex align-items-center bg-danger text-white">
                         {{ $error }}
                     </li>
                 @endforeach
@@ -49,20 +49,20 @@
         <div class="m-5">
             <label class="text-green-600">Category</label>
             <br/>
-            <select class="status" name="status">
+            <select class="status form-multi-select" name="status[]" multiple="multiple">
                 @foreach($status as $tag)
                     <option value="{{ $tag->tag_id }}">{{ $tag->name }} </option>
+
                 @endforeach
             </select>
         </div>
-
-
 
         <div class="btn-custom m-5 ">
             <button type="submit" value="save article" class="btn btn-outline-success">Submit</button>
         </div>
 
     </form>
+
     <script>
         // code for WYSWYG editor description
         ClassicEditor

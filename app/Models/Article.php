@@ -17,7 +17,7 @@ class Article extends Model
     use HasFactory;
 
     public function tags() {
-        return $this->belongsToMany(Tag::class, 'article_tag');
+        return $this->belongsToMany(Article_Tags::class, 'article_tag');
     }
 
     public function tag() {

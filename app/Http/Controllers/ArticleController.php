@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article_Tags;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Tag;
@@ -20,8 +21,9 @@ class ArticleController extends Controller
 
     public function create() {
         $data = Article::all();
+        $tag = Article_Tags::all();
         $status = Tag::all();
-        return view('articles.create', ['data' => $data, 'status' => $status]);
+        return view('articles.create', ['data' => $data, 'status' => $status, 'tag' => $tag]);
     }
 
     public function store(Request $request) {
@@ -36,11 +38,23 @@ class ArticleController extends Controller
             'excerpt' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:3',
             'status' => 'required|integer',
+            'status.*' => 'exists:'
         ]);
+        $tag = [
+            'tag_id' => 'tag_id',
+        ];
+
+        DB::table('article_tag')->insert($tag);
+
         $data['slug'] = Str::slug($data['title']);
+        $data['excerpt'] = strip_tags($data['excerpt']);
+        $data['description'] = strip_tags($data['description']);
 
         $newArticle = Article::create($data);
 
+        if (isset($data['tags'])) {
+            $newArticle->tags()->attach($data['tags']);
+        }
         return redirect(route('articles.index', ['status' => $status]));
 
     }
@@ -51,6 +65,7 @@ class ArticleController extends Controller
     }
 
     public function update(Article $article, Request $request) {
+
         $status = Tag::all();
         $data = $request->validate([
             'title' => 'required|string|max:255|min:3',
@@ -59,7 +74,6 @@ class ArticleController extends Controller
             'status' => 'required|integer',
         ]);
         $data['slug'] = Str::slug($data['title']);
-
         $article->update($data);
 
         return redirect(route('articles.index', ['status' => $status]));
@@ -67,8 +81,8 @@ class ArticleController extends Controller
 
     public function destroy(Article $article) {
         $article->delete();
-        Alert::success('Deleted successfully', 'Article deleted successfully');
         return redirect()->route('articles.index');
     }
+
 
 }
