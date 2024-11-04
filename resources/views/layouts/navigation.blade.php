@@ -99,33 +99,53 @@
 {{--    </div>--}}
 {{--</nav>--}}
 
-<div class="d-flex overflow-x-hidden grid-nav">
+<div class="d-flex">
     <!-- Sidebar -->
-    <nav class="bg-dark text-white p-3 position-fixed" style="height: 100vh; width: 50px; z-index: 100; overflow-x:hidden; overflow-y:auto">
-        <div class="position-sticky">
-        <ul>
-            <li>
-                <a href="{{ route('articles.index') }}" class="nav-link text-white p-2" style="transition: background 0.3s">Articles</a>
-            </li>
-            <li>
-                <a href="{{ route('articles.create') }}" class="nav-link text-white p-2" style="transition: background 0.3s">Create Article</a>
-            </li>
-        </ul>
+    <nav class="bg-dark text-white position-fixed h-100" style="width: 160px; padding: 1rem; border-right: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="position-sticky flex-1 flex-column">
+            <ul class="list-unstyled" style="padding: 0;">
+                <li>
+                    <a href="{{ route('articles.index') }}"
+                       class="nav-link text-white"
+                       style="padding: 15px; transition: background 0.3s;"
+                       onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
+                       onmouseout="this.style.backgroundColor='';">
+                        Articles
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('articles.create') }}"
+                       class="nav-link text-white"
+                       style="padding: 15px; transition: background 0.3s;"
+                       onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
+                       onmouseout="this.style.backgroundColor='';">
+                        Create Article
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-responsive-nav-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
-                              </x-responsive-nav-link>
+        <div class="mt-auto">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-responsive-nav-link :href="route('profile.edit')"
+                                       class="text-white"
+                                       style="display: block; padding: 10px; transition: background 0.3s;"
+                                       onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
+                                       onmouseout="this.style.backgroundColor='';">
+                    {{ __('Profile') }}
+                </x-responsive-nav-link>
 
-                            <x-responsive-nav-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-responsive-nav-link>
-                        </form>
+                <x-responsive-nav-link :href="route('logout')"
+                                       class="text-white"
+                                       style="display: block; padding: 10px; transition: background 0.3s;"
+                                       onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
+                                       onmouseout="this.style.backgroundColor='';"
+                                       onclick="event.preventDefault(); this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-responsive-nav-link>
+            </form>
         </div>
     </nav>
+
 
 </div>

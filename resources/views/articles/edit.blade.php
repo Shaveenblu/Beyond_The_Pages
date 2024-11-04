@@ -41,9 +41,9 @@
             <div class="m-5 ">
                 <label class="text-green-600">Category</label>
                 <br/>
-                <select class="status" name="status">
+                <select class="status form-multi-select" name="status[]" multiple="multiple">
                     @foreach($status as $tag)
-                        <option value="{{ $tag->tag_id }}">{{ $tag->name }}</option>
+                        <option value="{{ $tag->tag_id }}">{{ $tag->name }} </option>
                     @endforeach
                 </select>
             </div>

@@ -28,7 +28,6 @@ class ArticleController extends Controller
 
     public function store(Request $request) {
         $status = Tag::all();
-
         /*need to save user_id*/
         /*need to save category_id*/
         /*need to save tags*/
@@ -37,14 +36,12 @@ class ArticleController extends Controller
             'title' => 'required|string|max:255|min:3|',
             'excerpt' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:3',
-            'status' => 'required|integer',
-            'status.*' => 'exists:'
+            'status' => 'required|array',
         ]);
-        $tag = [
-            'tag_id' => 'tag_id',
-        ];
 
-        DB::table('article_tag')->insert($tag);
+
+
+
 
         $data['slug'] = Str::slug($data['title']);
         $data['excerpt'] = strip_tags($data['excerpt']);
@@ -56,25 +53,37 @@ class ArticleController extends Controller
             $newArticle->tags()->attach($data['tags']);
         }
         return redirect(route('articles.index', ['status' => $status]));
-
     }
 
     public function edit(Article $article) {
         $status = Tag::all();
-        return view('articles.edit', ['article' => $article, 'status' => $status]);
+        $tag = Article_Tags::all();
+        return view('articles.edit', ['article' => $article, 'status' => $status, 'tag' => $tag]);
     }
 
     public function update(Article $article, Request $request) {
-
+        // Retrieve all statuses for potential use
         $status = Tag::all();
+
+        // Validate the incoming request data
         $data = $request->validate([
             'title' => 'required|string|max:255|min:3',
             'excerpt' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:3',
             'status' => 'required|integer',
         ]);
+
+        // Prepare the tag data for insertion
+        $tag = [
+            'article_id' =>  $data->article_id,
+            'tag_id' => 'status',
+        ];
+
+        // Insert tag data into the article_tag table
+        DB::table('article_tag')->insert($tag);
         $data['slug'] = Str::slug($data['title']);
         $article->update($data);
+
 
         return redirect(route('articles.index', ['status' => $status]));
     }
@@ -83,6 +92,5 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('articles.index');
     }
-
 
 }

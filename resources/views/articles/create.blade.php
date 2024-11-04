@@ -52,7 +52,6 @@
             <select class="status form-multi-select" name="status[]" multiple="multiple">
                 @foreach($status as $tag)
                     <option value="{{ $tag->tag_id }}">{{ $tag->name }} </option>
-
                 @endforeach
             </select>
         </div>
