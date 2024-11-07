@@ -37,6 +37,7 @@ class ArticleController extends Controller
             'excerpt' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:3',
             'status' => 'required|array',
+            'status.*' => 'exists:tags,tag_id',
 
         ]);
 
@@ -46,11 +47,18 @@ class ArticleController extends Controller
         $data['excerpt'] = strip_tags($data['excerpt']);
         $data['description'] = strip_tags($data['description']);
 
+        $statusData = $data['status'];
+        unset($data['status']);
+
 
         $newArticle = Article::create($data);
-        if (isset($data['status']) && is_array($data['status'])) {
-            $newArticle->tags()->attach($data['status']);  // Attach status tags to the article_tags
+//        if (isset($statusData) && is_array($statusData)) {
+//            $newArticle->tags()->attach($statusData);  // Attach status tags to the article_tags
+//        }
+        if (!empty($statusData)) {
+            $newArticle->tags()->attach($statusData);  // Attach the status tags to the article_tags pivot table
         }
+
 //        if (isset($data['tags'])) {
 //            $newArticle->tags()->attach($data['tags']);
 //        }

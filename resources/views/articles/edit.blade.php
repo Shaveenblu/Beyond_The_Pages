@@ -39,7 +39,7 @@
             </div>
 
             <div class="m-5 ">
-                <label class="text-green-600">Category</label>
+                <label class="text-green-600">Tags</label>
                 <br/>
                 <select class="status form-multi-select" name="status[]" multiple="multiple">
                     @foreach($status as $tag)
