@@ -72,6 +72,7 @@ class ArticleController extends Controller
     public function edit(Article $article) {
         $status = Tag::all();
         $tag = Article_Tags::all();
+        $articles = Article::with('tags')->get();
         return view('articles.edit', ['article' => $article, 'status' => $status, 'tag' => $tag]);
     }
 

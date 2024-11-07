@@ -23,7 +23,7 @@
             <div class="m-5">
                 <label class="form-label text-green-600">Title</label>
                 <br/>
-                <input  class="border-0 focus:border-indigo-500" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
+                <input  class="border-0 focus:border-indigo-500 rounded-[10px]" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
             </div>
 
             <div class="m-5">
@@ -42,14 +42,14 @@
                 <label class="text-green-600">Tags</label>
                 <br/>
                 <select class="status form-multi-select" name="status[]" multiple="multiple">
-                    @foreach($status as $tag)
-                        <option value="{{ $tag->tag_id }}">{{ $tag->name }} </option>
+                    @foreach($article->tags as $tag)
+                        <option value="{{ $tag->tag_id }}" selected>{{ $tag->name }} </option>
                     @endforeach
                 </select>
             </div>
 
             <div class="m-5 text-green-600">
-                <button type="submit" value="Update" class="btn btn-outline-success">UPDATE</button>
+                <button type="submit" value="Update" class="btn btn-outline-success rounded-[10px]">UPDATE</button>
             </div>
 
 

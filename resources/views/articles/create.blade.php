@@ -28,7 +28,7 @@
                  <br>
                 <label for="title" class="text-green-600">Title</label>
                 <br/>
-                <input class="form-control border-0 focus:border-indigo-500" type="text" name="title" placeholder="title"/>
+                <input class="form-control border-0 focus:border-indigo-500 rounded-[10px]" type="text" name="title" placeholder="title"/>
 
             </ul>
         </div>
@@ -36,13 +36,13 @@
         <div class="m-5">
             <label class="form-label text-green-600">Excerpt</label>
             <br/>
-            <textarea name="excerpt" placeholder="excerpt" rows="2" cols="100" id="excerpt" class="border-0 focus:border-indigo-500"></textarea>
+            <textarea name="excerpt" placeholder="excerpt" id="excerpt" class="border-0 focus:border-indigo-500 "></textarea>
         </div>
 
         <div class="m-5 ">
             <label class="form-label text-green-600">Description</label>
             <br/>
-            <textarea name="description" placeholder="description" rows="20" cols="100" id="description" class=" border-0 focus:border-indigo-500"></textarea>
+            <textarea name="description" placeholder="description" id="description" class=" border-0 focus:border-indigo-500"></textarea>
         </div>
 
 
@@ -57,7 +57,7 @@
         </div>
 
         <div class="btn-custom m-5 ">
-            <button type="submit" value="save article" class="btn btn-outline-success">Submit</button>
+            <button type="submit" value="save article" class="btn btn-outline-success rounded-[10px]">Submit</button>
         </div>
 
     </form>
