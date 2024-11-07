@@ -101,7 +101,7 @@
 
 <div class="d-flex">
     <!-- Sidebar -->
-    <nav class="bg-dark text-white position-fixed h-100" style="width: 160px; padding: 1rem; border-right: 1px solid rgba(255, 255, 255, 0.1);">
+    <nav class="bg-dark text-white position-fixed h-100" style="width: 180px; padding: 1rem; border-right: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="position-sticky flex-1 flex-column">
             <ul class="list-unstyled" style="padding: 0;">
                 <li>

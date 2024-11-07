@@ -14,7 +14,7 @@ class ArticleController extends Controller
 {
     //
     public function index() {
-        $articles = Article::with('tag')->get();
+        $articles = Article::with('tags')->get();
         return view('articles.index', ['articles' => $articles]);
 
     }
@@ -37,21 +37,27 @@ class ArticleController extends Controller
             'excerpt' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:3',
             'status' => 'required|array',
+
         ]);
 
-
-
-
+//        $tags = ['status'];
 
         $data['slug'] = Str::slug($data['title']);
         $data['excerpt'] = strip_tags($data['excerpt']);
         $data['description'] = strip_tags($data['description']);
 
-        $newArticle = Article::create($data);
 
-        if (isset($data['tags'])) {
-            $newArticle->tags()->attach($data['tags']);
+        $newArticle = Article::create($data);
+        if (isset($data['status']) && is_array($data['status'])) {
+            $newArticle->tags()->attach($data['status']);  // Attach status tags to the article_tags
         }
+//        if (isset($data['tags'])) {
+//            $newArticle->tags()->attach($data['tags']);
+//        }
+
+//        if($request->article_id) {
+//            $status->category()->sync($request->article_id);
+//        }
         return redirect(route('articles.index', ['status' => $status]));
     }
 
@@ -70,17 +76,22 @@ class ArticleController extends Controller
             'title' => 'required|string|max:255|min:3',
             'excerpt' => 'required|string|max:255|min:3',
             'description' => 'required|string|min:3',
-            'status' => 'required|integer',
+            'status' => 'required|array'
+
         ]);
 
         // Prepare the tag data for insertion
-        $tag = [
-            'article_id' =>  $data->article_id,
-            'tag_id' => 'status',
-        ];
+//        $tag = ([
+//            'article_id' =>  $data->article_id,
+//            'tag_id' => 'status',
+//        ]);
+
+        if(isset($data['status']) && is_array($data['status'])) {
+            $article->tags()->sync($data['status']);
+        }
 
         // Insert tag data into the article_tag table
-        DB::table('article_tag')->insert($tag);
+//        DB::table('article_tag')->insert($tags);
         $data['slug'] = Str::slug($data['title']);
         $article->update($data);
 

@@ -32,7 +32,11 @@
                     <td class="text-sm">{{ $article->slug }}</td>
                     <td class="text-sm">{!! $article->excerpt !!}</td>
                     <td class="text-sm">{!! $article->description !!}</td>
-                    <td class="text-sm">{{ $article->tag->name }}</td>
+                    <td class="text-sm">
+                    @foreach($article->tags as $tag)
+                        <span>#{{ $tag->name }}</span>
+                        @endforeach
+                    </td>
                     <td>
                         <a href="{{ route('articles.edit', ['article' => $article]) }}">Edit</a>
                     </td>

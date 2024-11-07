@@ -16,12 +16,12 @@ class Article extends Model
 
     use HasFactory;
 
-    public function tags() {
-        return $this->belongsToMany(Article_Tags::class, 'article_tag');
-    }
+//    public function tags() {
+//        return $this->belongsToMany(Article_Tags::class, 'article_tag');
+//    }
 
-    public function tag() {
-        return $this->belongsTo(Tag::class,'status', 'tag_id');
+    public function tags() {
+        return $this->belongsToMany(Tag::class,'article_tag', 'article_id', 'tag_id');
     }
 
     protected $guarded = [];

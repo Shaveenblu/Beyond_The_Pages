@@ -11,5 +11,6 @@ class Article_Tags extends Model
     protected $primaryKey = ['article_id', 'tag_id'];
     use HasFactory;
 
+
     protected $guarded = [];
 }
