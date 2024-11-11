@@ -13,12 +13,9 @@ class Article extends Model
 
     // Primary key added
     protected $primaryKey = 'article_id';
+    protected $searchableFields = ['*'];
 
     use HasFactory;
-
-//    public function tags() {
-//        return $this->belongsToMany(Article_Tags::class, 'article_tag');
-//    }
 
     public function tags() {
         return $this->belongsToMany(Tag::class,'article_tag', 'article_id', 'tag_id');

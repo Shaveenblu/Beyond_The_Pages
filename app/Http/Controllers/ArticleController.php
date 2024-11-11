@@ -13,10 +13,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ArticleController extends Controller
 {
     //
-    public function index() {
-        $articles = Article::with('tags')->get();
-        return view('articles.index', ['articles' => $articles]);
+    public function index(Request $request) {
+        $search = $request->input('Search');
 
+        // query used
+        $articles = Article::with('tags')
+            ->when($search, function($query, $search){
+                return $query->where('title', 'like', '%'. $search . '%');
+            })
+            ->orderby('created_at', 'desc')
+            ->paginate(3);
+
+        return view('articles.index', ['articles' => $articles, 'search' => $search]);
     }
 
     public function create() {
@@ -41,8 +49,6 @@ class ArticleController extends Controller
 
         ]);
 
-//        $tags = ['status'];
-
         $data['slug'] = Str::slug($data['title']);
         $data['excerpt'] = strip_tags($data['excerpt']);
         $data['description'] = strip_tags($data['description']);
@@ -50,22 +56,12 @@ class ArticleController extends Controller
         $statusData = $data['status'];
         unset($data['status']);
 
-
         $newArticle = Article::create($data);
-//        if (isset($statusData) && is_array($statusData)) {
-//            $newArticle->tags()->attach($statusData);  // Attach status tags to the article_tags
-//        }
+
         if (!empty($statusData)) {
             $newArticle->tags()->attach($statusData);  // Attach the status tags to the article_tags pivot table
         }
 
-//        if (isset($data['tags'])) {
-//            $newArticle->tags()->attach($data['tags']);
-//        }
-
-//        if($request->article_id) {
-//            $status->category()->sync($request->article_id);
-//        }
         return redirect(route('articles.index', ['status' => $status]));
     }
 
@@ -74,6 +70,12 @@ class ArticleController extends Controller
         $tag = Article_Tags::all();
         $articles = Article::with('tags')->get();
         return view('articles.edit', ['article' => $article, 'status' => $status, 'tag' => $tag]);
+    }
+
+    public function show(Article $article) {
+        $status = Tag::all();
+        return view('articles.show', ['article'=>$article]);
+
     }
 
     public function update(Article $article, Request $request) {
@@ -89,21 +91,12 @@ class ArticleController extends Controller
 
         ]);
 
-        // Prepare the tag data for insertion
-//        $tag = ([
-//            'article_id' =>  $data->article_id,
-//            'tag_id' => 'status',
-//        ]);
-
         if(isset($data['status']) && is_array($data['status'])) {
             $article->tags()->sync($data['status']);
         }
 
-        // Insert tag data into the article_tag table
-//        DB::table('article_tag')->insert($tags);
         $data['slug'] = Str::slug($data['title']);
         $article->update($data);
-
 
         return redirect(route('articles.index', ['status' => $status]));
     }

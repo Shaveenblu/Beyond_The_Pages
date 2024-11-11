@@ -2,10 +2,17 @@
 
 @section('content')
 
-    <body>
+    <body class="container">
     <h1 class="text-green-600 text-center text-xl">
         Edit an Article
     </h1>
+
+    <div class="card m-10">
+        <div class="card-body">
+        <h4 class="">
+            <a href="{{ route('articles.index') }}" class="mr-5"><i class="icon ion-md-arrow-back"></i> Go back</a>
+
+        </h4>
     <div class="m-10">
         <form method="post" action="{{ route('articles.update', ['article' => $article]) }}">
             @csrf
@@ -23,7 +30,7 @@
             <div class="m-5">
                 <label class="form-label text-green-600">Title</label>
                 <br/>
-                <input  class="border-0 focus:border-indigo-500 rounded-[10px]" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
+                <input  class="border-1 focus:border-indigo-500 rounded-[10px] w-full" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
             </div>
 
             <div class="m-5">
@@ -52,9 +59,10 @@
                 <button type="submit" value="Update" class="btn btn-outline-success rounded-[10px]">UPDATE</button>
             </div>
 
-
         </form>
 
+    </div>
+        </div>
     </div>
 
     <script>

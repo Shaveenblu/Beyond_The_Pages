@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="grid-nav">
+<body class="grid-nav container">
     <h1 class="text-green-600 text-center text-xl">
         Create an article
     </h1>
@@ -12,6 +12,7 @@
         </div>
     @endif
 
+    <div class="card m-10">
     <form method="post" action="{{ route('articles.store') }} ">
         @csrf
         @method('post')
@@ -28,7 +29,7 @@
                  <br>
                 <label for="title" class="text-green-600">Title</label>
                 <br/>
-                <input class="form-control border-0 focus:border-indigo-500 rounded-[10px]" type="text" name="title" placeholder="title"/>
+                <input class="form-control border-1 focus:border-indigo-500 rounded-[10px]" type="text" name="title" placeholder="title"/>
 
             </ul>
         </div>
@@ -61,6 +62,7 @@
         </div>
 
     </form>
+    </div>
 
     <script>
         // code for WYSWYG editor description

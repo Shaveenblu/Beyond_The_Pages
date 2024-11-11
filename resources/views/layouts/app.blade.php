@@ -8,7 +8,6 @@
 
         <title> Beyond the pages </title>
 
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -20,7 +19,7 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -42,7 +41,7 @@
 
             <!-- Page Content -->
             <main>
-                <div class="flex-grow-1 justify-items-center justify-center" style="padding-left: 55rem; padding: 10rem;">
+                <div class="flex-grow-1 justify-items-center justify-center" style="padding-left: 90rem; padding: 1rem; margin: 10rem;">
                 @yield('content')
                 </div>
             </main>

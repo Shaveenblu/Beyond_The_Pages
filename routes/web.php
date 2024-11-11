@@ -17,12 +17,9 @@ Route::get('/article', [ArticleController::class, 'index'])->name('articles.inde
 Route::get('/article/create',[ArticleController::class, 'create'])->name('articles.create');
 Route::post('/article',[ArticleController::class, 'store'])->name('articles.store');
 Route::get('/article/{article}/edit',[ArticleController::class, 'edit'])->name('articles.edit');
+Route::get('/article/{article}',[ArticleController::class, 'show'])->name('articles.show');
 Route::put('/article/{article}/update',[ArticleController::class, 'update'])->name('articles.update');
 Route::delete('/article/{article}/destroy',[ArticleController::class, 'destroy'])->name('articles.destroy');
-
-
-//Route::get('/status', [StatusConbtroller::class, 'index'])->name('status.index');
-//Route::get
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
