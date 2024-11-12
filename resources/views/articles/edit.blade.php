@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <body class="container">
+
     <h1 class="text-green-600 text-center text-xl">
         Edit an Article
     </h1>
@@ -28,27 +28,27 @@
             </div>
 
             <div class="m-5">
-                <label class="form-label text-green-600">Title</label>
+                <label class="form-label text-green-600 font-bold">Title</label>
                 <br/>
-                <input  class="border-1 focus:border-indigo-500 rounded-[10px] w-full" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
+                <input  class="border-1 focus:border-indigo-500 rounded-[10px] w-full border-gray-300" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
             </div>
 
             <div class="m-5">
-                <label class="form-label text-green-600">Excerpt</label>
+                <label class="form-label text-green-600 font-bold">Excerpt</label>
                 <br/>
                 <textarea class="border-0 focus:border-indigo-500" rows="5" cols="100" name="excerpt" placeholder="Excerpt" id="excerpt">{{ $article->excerpt }}</textarea>
             </div>
 
             <div class="m-5 ">
-                <label class="text-green-600">Description</label>
+                <label class="text-green-600 font-bold">Description</label>
                 <br/>
                 <textarea name="description" id="description" placeholder="Description" rows="20" cols="100" class="border-0 focus:border-indigo-500">{{ $article->description }}</textarea>
             </div>
 
             <div class="m-5 ">
-                <label class="text-green-600">Tags</label>
+                <label class="text-green-600 font-bold">Tags</label>
                 <br/>
-                <select class="status form-multi-select" name="status[]" multiple="multiple">
+                <select class="status form-multi-select w-full" name="status[]" multiple="multiple" >
                     @foreach($article->tags as $tag)
                         <option value="{{ $tag->tag_id }}" selected>{{ $tag->name }} </option>
                     @endforeach
@@ -56,7 +56,10 @@
             </div>
 
             <div class="m-5 text-green-600">
-                <button type="submit" value="Update" class="btn btn-outline-success rounded-[10px]">UPDATE</button>
+                <button type="submit" value="Update" class="btn btn-outline-success rounded-[10px]">
+                    <i class="icon ion-md-save"></i>
+                    UPDATE
+                </button>
             </div>
 
         </form>

@@ -110,6 +110,7 @@
                        style="padding: 15px; transition: background 0.3s;"
                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                        onmouseout="this.style.backgroundColor='';">
+                        <i class="icon ion-md-book"></i>
                         Articles
                     </a>
                 </li>
@@ -119,6 +120,7 @@
                        style="padding: 15px; transition: background 0.3s;"
                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                        onmouseout="this.style.backgroundColor='';">
+                        <i class="icon ion-md-create"></i>
                         Create Article
                     </a>
                 </li>
@@ -132,6 +134,7 @@
                                        style="display: block; padding: 10px; transition: background 0.3s;"
                                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                                        onmouseout="this.style.backgroundColor='';">
+                    <i class="icon ion-md-person"></i>
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
@@ -141,6 +144,7 @@
                                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                                        onmouseout="this.style.backgroundColor='';"
                                        onclick="event.preventDefault(); this.closest('form').submit();">
+                    <i class="icon ion-md-log-out"></i>
                     {{ __('Log Out') }}
                 </x-responsive-nav-link>
             </form>

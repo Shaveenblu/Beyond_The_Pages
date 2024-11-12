@@ -41,7 +41,7 @@
 
             <!-- Page Content -->
             <main>
-                <div class="flex-grow-1 justify-items-center justify-center" style="padding-left: 90rem; padding: 1rem; margin: 10rem;">
+                <div class="flex-grow-1 justify-items-center justify-center " style="padding-left: 90rem; padding: 1rem; margin: 10rem;">
                 @yield('content')
                 </div>
             </main>
