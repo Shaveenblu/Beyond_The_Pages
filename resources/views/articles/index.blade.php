@@ -24,12 +24,12 @@
                             </div>
                         </form>
                     </div>
-`                    <div class="m-2 col-m-5 mt-5">
+                   <div class="m-2 col-m-5 mt-5">
                         <a href="{{ route('articles.create') }}" class="btn btn-outline-success rounded-[10px]">
                             <i class="icon ion-md-add"></i>
 
                         </a>
-                    </div>`
+                    </div>
                     <div class="col-md-6 text-right">
                         @can('create', App\Models\Article::class)
 
@@ -47,7 +47,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="card m-10 p-1">
+        <div class="card m-10 p-1 ">
             <div class="card-body">
                 <div class="card-title text-green-600 text-2xl">Articles List</div>
                     <div class="table-responsive">
@@ -78,16 +78,21 @@
                                     <td class="text-sm text-left d-inline">
                                         <div class="flex space-x-1">
 
+                                            @can('article-edit')
                                             <a href='{{ route('articles.edit', ['article' =>$article]) }}' >
-                                                <button class="btn bg-gray-100 rounded-[10px]">
+                                                <button class="btn bg-gray-100 rounded-[10px] space-x-8">
                                                     <i class="icon ion-md-create"></i>
                                                 </button>
                                             </a>
+                                            @endcan
+
+                                            @can('article-show')
                                             <a href =' {{ route('articles.show', ['article' => $article]) }} '>
-                                                <button class="btn bg-gray-100 rounded-[10px]">
+                                                <button class="btn bg-gray-100 rounded-[10px] space-x-1">
                                                     <i class="icon ion-md-eye"></i>
                                                 </button>
                                             </a>
+                                                @endcan
 
 
                                             <div class="text-red-600 col-1">
@@ -111,11 +116,13 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            @can('article-delete')
                                                             <form method="post" action="{{ route('articles.destroy', ['article' => $article]) }}" style="display: inline;">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn btn-danger rounded-[10px]">Delete</button>
                                                             </form>
+                                                            @endcan
                                                         </div>
                                                     </div>
                                                 </div>

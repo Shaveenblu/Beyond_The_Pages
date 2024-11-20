@@ -9,6 +9,8 @@ use Psy\Util\Str;
 
 class Article extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['title', 'slug', 'excerpt', 'description', 'status'];
 
     // Primary key added
