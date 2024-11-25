@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="grid-nav container align-content-center justify-center text-center">
-        <div class="mt-0 mb-4 m-10">
-            <div class="row">
+        <div class=" mt-0 mb-4 m-10">
+            <div class="row align-content-left">
                     <div class="col-md-6 mt-5">
                         <form>
                             <div class="input-group">
@@ -48,7 +48,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="card m-10 p-1">
+        <div class="m-10 p-1">
             <div class="card-body">
                 <div class="card-title text-green-600 text-2xl">Articles List</div>
                     <div class="table-responsive">
@@ -61,7 +61,6 @@
                                     <th scope="col" class="text-green-600 text-xl text-left">Description</th>
                                     <th scope="col" class="text-green-600 text-xl text-left">Status</th>
                                     <th scope="col" class="text-green-600 text-xl text-left">Actions</th>
-
                                 </tr>
 
                             @foreach($articles as $article)

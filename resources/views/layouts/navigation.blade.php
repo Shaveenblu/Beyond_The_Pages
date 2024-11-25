@@ -131,7 +131,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-responsive-nav-link :href="route('users.index')"
-                                       class="text-white"
+                                       class="nav-link text-white"
                                        style="display: block; padding: 10px; transition: background 0.3s;"
                                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                                        onmouseout="this.style.backgroundColor='';">
@@ -140,7 +140,7 @@
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('roles.index')"
-                                       class="text-white"
+                                       class="nav-link text-white"
                                        style="display: block; padding: 10px; transition: background 0.3s;"
                                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                                        onmouseout="this.style.backgroundColor='';">
@@ -150,7 +150,7 @@
 
 
                 <x-responsive-nav-link :href="route('logout')"
-                                       class="text-white"
+                                       class="nav-link text-white"
                                        style="display: block; padding: 10px; transition: background 0.3s;"
                                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                                        onmouseout="this.style.backgroundColor='';"

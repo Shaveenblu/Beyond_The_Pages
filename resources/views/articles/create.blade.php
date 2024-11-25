@@ -9,12 +9,12 @@
         </div>
     @endif
 
-    <div class="card m-10 py-16">
+    <div class="card m-10 py-6">
 
         <h1 class="text-green-600 text-center text-xl">
             Create an article
         </h1>
-    <form method="post" action="{{ route('articles.store') }} ">
+    <form method="post" action="{{ route('articles.store') }}" >
         @csrf
         @method('post')
         <div class="m-5">

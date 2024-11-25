@@ -9,6 +9,7 @@
 
     <link href={{ asset('bootstrap/css/bootstrap.css') }} rel="stylesheet">
     <title> Beyond the pages </title>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -33,7 +34,9 @@
 
         <main class="py-4">
 
-            @yield('content')
+            <div class="content-area ml-180" style="margin-left: 180px; flex-grow: 1; padding: 20px;">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
