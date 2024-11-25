@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid-nav container align-content-center justify-center text-center ">
-        <div class="searchbar mt-0 mb-4 m-10">
+    <div class="grid-nav container align-content-center justify-center text-center">
+        <div class="mt-0 mb-4 m-10">
             <div class="row">
                     <div class="col-md-6 mt-5">
                         <form>
@@ -25,10 +25,11 @@
                         </form>
                     </div>
                    <div class="m-2 col-m-5 mt-5">
+
                         <a href="{{ route('articles.create') }}" class="btn btn-outline-success rounded-[10px]">
                             <i class="icon ion-md-add"></i>
-
                         </a>
+
                     </div>
                     <div class="col-md-6 text-right">
                         @can('create', App\Models\Article::class)
@@ -47,7 +48,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="card m-10 p-1 ">
+        <div class="card m-10 p-1">
             <div class="card-body">
                 <div class="card-title text-green-600 text-2xl">Articles List</div>
                     <div class="table-responsive">
@@ -86,13 +87,14 @@
                                             </a>
                                             @endcan
 
-                                            @can('article-show')
+
+{{--                                            @can('article-show')--}}
                                             <a href =' {{ route('articles.show', ['article' => $article]) }} '>
                                                 <button class="btn bg-gray-100 rounded-[10px] space-x-1">
                                                     <i class="icon ion-md-eye"></i>
                                                 </button>
                                             </a>
-                                                @endcan
+{{--                                            @endcan--}}
 
 
                                             <div class="text-red-600 col-1">

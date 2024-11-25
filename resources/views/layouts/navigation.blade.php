@@ -124,22 +124,30 @@
                         Create Article
                     </a>
                 </li>
-                <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
-                <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
-                <li><a class="nav-link" href="{{ route('products.index') }}">Manage Product</a></li>
+
             </ul>
         </div>
         <div class="mt-auto">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <x-responsive-nav-link :href="route('profile.edit')"
+                <x-responsive-nav-link :href="route('users.index')"
                                        class="text-white"
                                        style="display: block; padding: 10px; transition: background 0.3s;"
                                        onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
                                        onmouseout="this.style.backgroundColor='';">
                     <i class="icon ion-md-person"></i>
-                    {{ __('Profile') }}
+                    {{ __('Manage Users') }}
                 </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('roles.index')"
+                                       class="text-white"
+                                       style="display: block; padding: 10px; transition: background 0.3s;"
+                                       onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.1)';"
+                                       onmouseout="this.style.backgroundColor='';">
+                    <i class="icon ion-md-person"></i>
+                    {{ __('Manage Role') }}
+                </x-responsive-nav-link>
+
 
                 <x-responsive-nav-link :href="route('logout')"
                                        class="text-white"

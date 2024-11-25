@@ -15,9 +15,28 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                        <br/>
+                        <a href="{{ route('articles.index') }}" class="btn btn-success btn-sm">
+
+                            Create Articles
+
+                        </a>
+                        <br/>
+                        <a href="{{ route('users.index') }}" class="btn btn-success btn-sm">
+
+                            Users
+
+                        </a>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
 @endsection
