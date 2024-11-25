@@ -11,21 +11,23 @@
 
     <div class="card m-10 py-6">
 
-        <h1 class="text-green-600 text-center text-xl">
+        <p class="text-green-600 text-center card-title text-2xl">
             Create an article
-        </h1>
+        </p>
     <form method="post" action="{{ route('articles.store') }}" >
         @csrf
         @method('post')
         <div class="m-5">
             @if($errors->any())
-            <ul>
+            <ul class=" alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
                 @foreach($errors->all() as $error)
                 {{-- Error display --}}
-                    <li class="list-group-item d-flex align-items-center bg-danger text-white">
+                    <li >
                         {{ $error }}
                     </li>
                 @endforeach
+            </ul>
             @endif
                  <br>
                 <label for="title" class="text-green-600 font-bold">Title</label>

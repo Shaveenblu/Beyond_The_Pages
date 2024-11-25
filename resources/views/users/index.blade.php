@@ -45,9 +45,56 @@
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUser{{ $user->id }}"><i class="fa-solid fa-trash"></i> Delete</button>
                     </form>
                 </td>
+
+                <!-- Delete popup -->
+                <div class="modal fade" id="deleteUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteUserLabel{{ $user->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteUserLabel{{ $user->id }}">Confirm Delete</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this user?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                    <form method="post" action="{{ route('users.destroy', ['user' => $user]) }}" style="display: inline;">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger rounded-[10px]">Delete</button>
+                                    </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="successModalLabel">User Deleted</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    The User has been successfully deleted.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary rounded-[10px]" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
             </tr>
         @endforeach
     </table>

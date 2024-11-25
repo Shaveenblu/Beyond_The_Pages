@@ -10,7 +10,7 @@
     <div class="card m-10">
         <div class="card-body">
         <h4 class="">
-            <a href="{{ route('articles.index') }}" class="mr-5"><i class="icon ion-md-arrow-back"></i> Go back</a>
+            <a href="{{ route('articles.index') }}" class="mr-5 btn btn-primary"><i class="icon ion-md-arrow-back"></i> Go back</a>
 
         </h4>
     <div class="m-10">
@@ -19,7 +19,7 @@
             @method('put')
             <div class="m-5">
                 @if($errors->any())
-                    <ul>
+                    <ul class=" alert alert-danger">
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
@@ -30,7 +30,7 @@
             <div class="m-5">
                 <label class="form-label text-green-600 font-bold">Title</label>
                 <br/>
-                <input  class="border-1 focus:border-indigo-500 rounded-[10px] w-full border-gray-300" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
+                <input  class="form-control border-1 focus:border-indigo-500 rounded-[10px] border-gray-300" type="text" name="title" placeholder="Title" value="{{ $article->title }}" class="form-control"/>
             </div>
 
             <div class="m-5">

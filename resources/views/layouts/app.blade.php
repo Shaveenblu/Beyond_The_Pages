@@ -29,14 +29,17 @@
 
 <body>
 
-    <div id="app">
+    <div id="app py-4">
+
         @include('layouts.navigation')
 
         <main class="py-4">
 
             <div class="content-area ml-180" style="margin-left: 180px; flex-grow: 1; padding: 20px;">
+                @yield('header')
                 @yield('content')
             </div>
+
         </main>
     </div>
 </body>

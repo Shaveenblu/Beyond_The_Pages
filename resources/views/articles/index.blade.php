@@ -13,7 +13,7 @@
                                     name="Search"
                                     placeholder="{{ __('crud.common.search') }}"
                                     value="{{ $search ?? '' }}"
-                                    class="form-control rounded-[10px] border-"
+                                    class="form-control rounded-[10px] border"
                                     autocomplete="off"
                                     />
                                     <div class="input-group-append">
@@ -21,16 +21,19 @@
                                             <i class="icon ion-md-search"></i>
                                         </button>
                                     </div>
+                                <div class="m-1 col-m-1 mt-1">
+                                    <a href="{{ route('articles.create') }}" class="btn btn-outline-success rounded-[10px]">
+                                        <i class="icon ion-md-add"></i> Create
+                                    </a>
+
+                                </div>
+
+
                             </div>
+
                         </form>
                     </div>
-                   <div class="m-2 col-m-5 mt-5">
 
-                        <a href="{{ route('articles.create') }}" class="btn btn-outline-success rounded-[10px]">
-                            <i class="icon ion-md-add"></i>
-                        </a>
-
-                    </div>
                     <div class="col-md-6 text-right">
                         @can('create', App\Models\Article::class)
 
@@ -48,7 +51,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="m-10 p-1">
+        <div class="m-10 p-1 align-content-center">
             <div class="card-body">
                 <div class="card-title text-green-600 text-2xl">Articles List</div>
                     <div class="table-responsive">
@@ -75,26 +78,20 @@
                                             <span>#{{ $tag->name ?? '-'}}</span>
                                         @endforeach
                                     </td>
-                                    <td class="text-sm text-left d-inline">
+                                    <td class="text-sm text-left ">
                                         <div class="flex space-x-1">
 
                                             @can('article-edit')
-                                            <a href='{{ route('articles.edit', ['article' =>$article]) }}' >
-                                                <button class="btn bg-gray-100 rounded-[10px] space-x-8">
+                                            <a href='{{ route('articles.edit', ['article' =>$article]) }}'  class="btn bg-gray-100 rounded-[10px] space-x-8">
                                                     <i class="icon ion-md-create"></i>
-                                                </button>
+
                                             </a>
                                             @endcan
-
-
 {{--                                            @can('article-show')--}}
-                                            <a href =' {{ route('articles.show', ['article' => $article]) }} '>
-                                                <button class="btn bg-gray-100 rounded-[10px] space-x-1">
+                                            <a href =' {{ route('articles.show', ['article' => $article]) }} ' class="btn bg-gray-100 rounded-[10px] space-x-1">
                                                     <i class="icon ion-md-eye"></i>
-                                                </button>
                                             </a>
 {{--                                            @endcan--}}
-
 
                                             <div class="text-red-600 col-1">
                                                 <!-- Button trigger modal -->
@@ -102,6 +99,8 @@
                                                     <i class="icon ion-md-trash"></i>
                                                 </button>
                                             </div>
+                                        </div>
+                                    </td>
                                             <!-- Delete popup -->
                                             <div class="modal fade" id="deleteModal{{ $article->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $article->id }}" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -127,7 +126,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+
 
                                             {{--Success message--}}
                                             <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -147,21 +146,26 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
 
-                                </tr>
+                                            </div>
+
+                                        </div>
+
                             @endforeach
                         </table>
+
                     </div>
+
             </div>
+
         </div>
 
     </div>
+    <div class="d-flex justify-content-center align-items-center">
+        {{--    pagination --}}
+        {{$articles->links()}}
+    </div>
 
-{{--    pagination --}}
-    {{$articles->links()}}
 
 
 @endsection
